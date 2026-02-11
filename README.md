@@ -26,6 +26,12 @@ This project helps answer:
 
 ![S3 Data Lake](screenshots/s3_data_lake.png)
 
+![Athena SQL](screenshots/athena_sql_query.png)
+
+![Athena Results](screenshots/athena_query_results.png)
+
+![Power BI Dashboard](screenshots/dashboard_overview.png)
+
 ---
 
 ## Key KPIs (Athena SQL)

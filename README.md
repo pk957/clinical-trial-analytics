@@ -1,23 +1,41 @@
-# clinical-trial-analytics
-End-to-end clinical trial analytics using AWS Athena, SQL, and Power BI
-clinical-trial-analytics/
-│
-├── data/
-│   ├── patients.csv
-│   ├── trials.csv
-│   ├── enrollment.csv
-│   └── outcomes.csv
-│
-├── sql/
-│   ├── create_external_tables.sql
-│   ├── kpi_dropout_rate.sql
-│   ├── kpi_completion_rate.sql
-│   └── kpi_outcome_distribution.sql
-│
-├── screenshots/
-│   ├── dashboard_overview.png
-│   ├── athena_sql_query.png
-│   ├── athena_query_results.png
-│   └── s3_data_lake.png
-│
-└── README.md
+# Clinical Trial Analytics (AWS Athena + SQL + Power BI)
+
+## Project Overview
+This project demonstrates an end-to-end clinical trial analytics pipeline using AWS.
+The objective is to analyze patient dropouts, completion rates, and outcome distributions
+across different trial phases.
+
+---
+
+## Business Problem
+Clinical trials are expensive and time-sensitive.
+High dropout rates can increase cost, delay approvals, and reduce study quality.
+
+This project helps answer:
+- Which trial phase has higher dropouts?
+- What is the overall completion rate?
+- How are outcomes distributed?
+
+---
+
+## Data Architecture
+- CSV data stored in Amazon S3 (data lake)
+- External tables created in Amazon Athena
+- SQL used to compute KPIs
+- Power BI used for visualization
+
+![S3 Data Lake](screenshots/s3_data_lake.png)
+
+---
+
+## Key KPIs (Athena SQL)
+
+### Dropout Rate by Phase
+```sql
+SELECT t.phase,
+       COUNT(*) AS dropped_patients
+FROM trials t
+JOIN enrollments e
+  ON t.trial_id = e.trial_id
+WHERE LOWER(e.status) = 'dropped'
+GROUP BY t.phase;

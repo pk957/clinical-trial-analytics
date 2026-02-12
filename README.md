@@ -32,9 +32,15 @@ This project helps answer:
 
 ![Power BI Dashboard](screenshots/dashboard_overview.png)
 
+![CTE KPI SQL](screenshots/athena_cte_kpi_query.png)
+
+![CTE KPI Results](screenshots/athena_cte_kpi_results.png)
+
 ---
 
 ## Key KPIs (Athena SQL)
+- Advanced phase-wise completion and dropout analysis using CTEs
+  (see `kpi_phase_performance_cte.sql`)
 
 ### Dropout Rate by Phase
 ```sql
